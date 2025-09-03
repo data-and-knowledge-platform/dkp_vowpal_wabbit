@@ -1,5 +1,8 @@
 # Provides the present version of VowpalWabbit
 
-import pkg_resources
+from importlib.metadata import version, PackageNotFoundError
 
-__version__ = pkg_resources.require("vowpalwabbit")[0].version
+try:
+    __version__ = version("vowpalwabbit")
+except PackageNotFoundError:
+    __version__ = "unknown"
